@@ -12,12 +12,9 @@
       file:
         path: ~/{{service_name}}
         state: directory
-    - name: Download playbooks
-      git:
-        repo: https://github.com/awuuuuu/playbooks
+    - name: Copy playbooks
+      copy:
+        src: "~/{{playbook_src}}/{{item}}"
         dest: "~/{{service_name}}"
-    - name: Download playbooks
-      debug:
-        msg: "{{service_list[(service_name)]}}"
-#- import_playbook: "/home/ubuntu/{{service_name}}/{{service_list}}.yml"
+      with_items: "{{service_list[(service_name)]}}"
 
