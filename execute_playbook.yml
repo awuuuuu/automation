@@ -6,10 +6,9 @@
         path: ~
         state: "{{service_name}}"  
     - name: Execute playbooks
-        git: >
-          repo=https://github.com/awuuuuu/playbooks
-          key_file=/root/.ssh/id_rsa.github
-          dest="~/{{service_name}}"
+        git:
+          repo: https://github.com/awuuuuu/playbooks
+          dest: "~/{{service_name}}"
     - name: Execute playbooks
         shell: "ansible {{playbook_name}}"
         args:
