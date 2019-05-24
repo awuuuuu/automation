@@ -3,8 +3,8 @@
   tasks:
     - name: Creates workding directory
       file:
-        path: ~
-        state: "{{service_name}}"  
+        path: ~/{{service_name}}
+        state: directory
     - name: Execute playbooks
       git:
         repo: https://github.com/awuuuuu/playbooks
