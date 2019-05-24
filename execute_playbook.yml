@@ -1,13 +1,23 @@
 - name: Execute playbooks
   hosts: all
+  vars:
+    service_list:
+      "service1":
+        - playbook1.yml
+        - playbook2.yml
+      "service2":
+        - playbook2.yml
   tasks:
-    - name: Creates workding directory
+    - name: Creates working directory
       file:
         path: ~/{{service_name}}
         state: directory
-    - name: Execute playbooks
+    - name: Download playbooks
       git:
         repo: https://github.com/awuuuuu/playbooks
         dest: "~/{{service_name}}"
-#- import_playbook: "/home/ubuntu/{{service_name}}/{{playbook_name}}.yml"
+    - name: Download playbooks
+      debug:
+        msg: "{{service_list[(service_name)]}}"
+#- import_playbook: "/home/ubuntu/{{service_name}}/{{service_list}}.yml"
 
