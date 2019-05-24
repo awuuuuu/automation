@@ -7,6 +7,6 @@
           - cd ~/
           - mkdir {{service_name}}
           - cd {{service_name}}   
-          - {{download_playbooks}}   
+          - git clone https://github.com/awuuuuu/playbooks   
           - cd {{playbook_folder_name}}
           - ansible {{playbook_name}}
