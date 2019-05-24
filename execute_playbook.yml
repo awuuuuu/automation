@@ -1,7 +1,7 @@
 - name: Execute playbooks
   hosts: all
   tasks:
-    - name: Creates working directory
+    - name: Creates workding directory
       file:
         path: ~/{{service_name}}
         state: directory
@@ -9,5 +9,5 @@
       git:
         repo: https://github.com/awuuuuu/playbooks
         dest: "~/{{service_name}}"
-    - name: Execute playbooks
-      import_playbook: "~/{{service_name}}/{{playbook_name}}.yml"
+- import_playbook: "{{service_name}}/{{playbook_name}}.yml"
+
