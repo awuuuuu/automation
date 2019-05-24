@@ -10,6 +10,4 @@
         cd {{Playbook_Folder_Name}}
         ansible {{Playbook_Name}}.yml
       become: true
-      ignore_errors: yes  
-      debug:
-        msg: "Hello World! {{ Service_Name }} "  
+      ignore_errors: yes
