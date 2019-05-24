@@ -8,7 +8,7 @@
         cd {{Folder_Name}}
         mkdir {{Service_Name}}
         cd {{Service_Name}}
-        ansible {{Playbook_Name}}
+        ansible {{Playbook_Name}}.yml
       become: true
       ignore_errors: yes  
       debug:
