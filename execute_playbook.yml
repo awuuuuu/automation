@@ -2,12 +2,11 @@
   hosts: all
   tasks:
     - name: Execute playbooks
-      shell: |
-        cd ~/
-        mkdir {{Service_Name}}
-        cd {{Service_Name}}
-        {{Download_Playbooks}}
-        cd {{Playbook_Folder_Name}}
-        ansible {{Playbook_Name}}.yml
-      become: true
-      ignore_errors: yes
+      command:
+        argv:
+          - cd ~/
+          - mkdir {{service_name}}
+          - cd {{service_name}}   
+          - {{download_playbooks}}   
+          - cd {{playbook_folder_name}}
+          - ansible {{playbook_name}}
