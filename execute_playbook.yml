@@ -4,7 +4,7 @@
     - name: Execute playbooks
       command:
         argv:
-          - cd ~/
+          - cd ~
           - mkdir {{service_name}}
           - cd {{service_name}}   
           - git clone https://github.com/awuuuuu/playbooks   
