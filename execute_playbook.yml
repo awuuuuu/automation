@@ -4,5 +4,12 @@
     - name: Creates workding directory
       file:
         path: ~
-        state: {{service_name}}  
-
+        state: "{{service_name}}"  
+    - name: Execute playbooks
+        shell: git clone https://github.com/awuuuuu/playbooks
+        args:
+          chdir: ~/{{service_name}}
+    - name: Execute playbooks
+        shell: ansible {{playbook_name}}
+        args:
+          chdir: ~/{{service_name}}/{{playbook_folder_name}}
