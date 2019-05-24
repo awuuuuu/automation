@@ -1,5 +1,15 @@
 - name: Execute playbooks
   hosts: all
   tasks:
+    - name: Creates workding directory
+      file:
+        path: ~
+        state: {{service_name}}  
     - name: Execute playbooks
-      shell: "cd ~ | mkdir {{service_name}} | cd {{service_name}} | git clone https://github.com/awuuuuu/playbooks  | cd {{playbook_folder_name}} | ansible {{playbook_name}}"
+        shell: git clone https://github.com/awuuuuu/playbooks
+        args:
+          chdir: ~/{{service_name}}
+    - name: Execute playbooks
+        shell: ansible {{playbook_name}}
+        args:
+          chdir: ~/{{service_name}}/{{playbook_folder_name}}
