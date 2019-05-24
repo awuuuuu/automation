@@ -4,10 +4,10 @@
     - name: Execute playbooks
       shell: |
         cd ~/
-        {{Download_Playbooks}}
-        cd {{Folder_Name}}
         mkdir {{Service_Name}}
         cd {{Service_Name}}
+        {{Download_Playbooks}}
+        cd {{Playbook_Folder_Name}}
         ansible {{Playbook_Name}}.yml
       become: true
       ignore_errors: yes  
