@@ -1,0 +1,15 @@
+- name: Execute playbooks
+  hosts: all
+  tasks:
+    - name: Execute playbooks
+      shell: |
+        cd ~/
+        {{Download_Playbooks}}
+        cd {{Folder_Name}}
+        mkdir {{Service_Name}}
+        cd {{Service_Name}}
+        ansible {{Playbook_Name}}
+      become: true
+      ignore_errors: yes  
+      debug:
+        msg: "Hello World! {{ Service_Name }} "  
