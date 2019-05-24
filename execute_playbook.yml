@@ -6,10 +6,10 @@
         path: ~
         state: "{{service_name}}"  
     - name: Execute playbooks
-        git:
-          repo: https://github.com/awuuuuu/playbooks
-          dest: "~/{{service_name}}"
+      git:
+        repo: https://github.com/awuuuuu/playbooks
+        dest: "~/{{service_name}}"
     - name: Execute playbooks
-        shell: "ansible {{playbook_name}}"
-        args:
-          chdir: "~/{{service_name}}/{{playbook_folder_name}}"
+      shell: "ansible-playbook {{playbook_name}}"
+      args:
+        chdir: "~/{{service_name}}/{{playbook_folder_name}}"
