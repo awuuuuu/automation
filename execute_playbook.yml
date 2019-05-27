@@ -1,20 +1,34 @@
 - name: Execute playbooks
-  hosts: all
+  hosts: localhost
   vars:
     service_list:
       "service1":
-        - playbook1.yml
-        - playbook2.yml
+        "file":
+          - credentials.tf
+          - otc1.tf
       "service2":
-        - playbook2.yml
+        "file":
+          - credentials.tf
+          - otc2.tf
+        "parameter":
+          name: "{{name|default()}}"
+          image_id: "{{image_id|default()}}"
   tasks:
-    - name: Creates working directory
+    - name: Initialization
+      set_fact:
+        path: "~/"
+        dir_name: "{{service_name}}"
+    - name: Create working directory
       file:
-        path: ~/{{service_name}}
+        path: "{{path+service_name}}"
         state: directory
-    - name: Copy playbooks
+    - name: Copy Providers or Playbooks
       copy:
-        src: "~/{{playbook_src}}/{{item}}"
-        dest: "~/{{service_name}}"
-      with_items: "{{service_list[(service_name)]}}"
-
+        src: "{{path + provider_src}}/{{item}}"
+        dest: "{{path + service_name}}"
+      with_items: "{{service_list[service_name].file}}"
+    - terraform:
+        project_path: '{{path + service_name}}'
+        state: present
+        force_init: true
+        variables: "{{service_list[service_name].parameter}}"
