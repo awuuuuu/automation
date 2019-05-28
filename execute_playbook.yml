@@ -26,9 +26,10 @@
         path: "{{path+service_name}}"
         state: directory
     - name: Copy required providers
-      fetch:
+      copy:
         src: "{{path + provider_src}}/{{item}}"
-        dest: "{service_name}}/"
+        dest: "{path + service_name}}/"
+        remote_src: yes
       with_items: "{{service_list[service_name].file}}"
     - terraform:
         project_path: '{{path + service_name}}'
