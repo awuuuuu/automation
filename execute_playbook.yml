@@ -19,7 +19,7 @@
   tasks:
     - name: Initialization
       set_fact:
-        path: "~/"
+        path: "/home/ubuntu/"
         dir_name: "{{service_name}}"
     - name: Create working directory
       file:
