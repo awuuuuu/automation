@@ -28,7 +28,7 @@
     - name: Copy required providers
       copy:
         src: "{{path + provider_src}}/{{item}}"
-        dest: "{path + service_name}}/"
+        dest: "{{path + service_name}}/"
         remote_src: yes
       with_items: "{{service_list[service_name].file}}"
     - terraform:
