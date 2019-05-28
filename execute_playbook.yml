@@ -25,8 +25,8 @@
       file:
         path: "{{path+service_name}}"
         state: directory
-    - name: Copy Providers or Playbooks
-      fetch:
+    - name: Copy required providers
+      copy:
         src: "{{path + provider_src}}/{{item}}"
         dest: "{{path + service_name}}"
       with_items: "{{service_list[service_name].file}}"
