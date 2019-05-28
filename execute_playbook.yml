@@ -6,6 +6,9 @@
         "file":
           - credentials.tf
           - otc1.tf
+        "parameter":
+          name: "{{name|default()}}"           
+          flavor_id: "{{flavor_id|default()}}"    
       "service2":
         "file":
           - credentials.tf
