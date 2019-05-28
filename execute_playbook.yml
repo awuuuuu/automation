@@ -7,15 +7,15 @@
           - credentials.tf
           - otc1.tf
         "parameter":
-          name: "{{name|default()}}"           
-          flavor_id: "{{flavor_id|default()}}"    
+          "name": "{{name|default()}}"           
+          "flavor_id": "{{flavor_id|default()}}"    
       "service2":
         "file":
           - credentials.tf
           - otc2.tf
         "parameter":
-          name: "{{name|default()}}"
-          image_id: "{{image_id|default()}}"
+          "name": "{{name|default()}}"
+          "image_id": "{{image_id|default()}}"
   tasks:
     - name: Initialization
       set_fact:
