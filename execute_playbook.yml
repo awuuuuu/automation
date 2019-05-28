@@ -29,6 +29,7 @@
       fetch:
         src: "{{path + provider_src}}/{{item}}"
         dest: "{{service_name}}"
+        flat: yes
       with_items: "{{service_list[service_name].file}}"
     - terraform:
         project_path: '{{path + service_name}}'
