@@ -28,7 +28,7 @@
     - name: Copy required providers
       fetch:
         src: "{{path + provider_src}}/{{item}}"
-        dest: "{{path + service_name+'/'+item}}"
+        dest: "{service_name+'/'}}"
         flat: yes
       with_items: "{{service_list[service_name].file}}"
     - terraform:
