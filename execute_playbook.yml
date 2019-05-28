@@ -26,8 +26,8 @@
         path: "{{path+service_name}}"
         state: directory
     - name: Copy Providers or Playbooks
-      copy:
-        remote_src: "{{path + provider_src}}/{{item}}"
+      fetch:
+        src: "{{path + provider_src}}/{{item}}"
         dest: "{{path + service_name}}"
       with_items: "{{service_list[service_name].file}}"
     - terraform:
