@@ -20,19 +20,19 @@
     - name: Initialization
       set_fact:
         path: "/home/ubuntu/"
-        dir_name: "{{service_name}}"
+        dir_name: "{{service_name + '_' + manageiq.request | replace('/', '_')}}"
     - name: Create working directory
       file:
-        path: "{{path+service_name}}"
+        path: "{{path+dir_name}}"
         state: directory
     - name: Copy required providers
       copy:
         src: "{{path + provider_src}}/{{item}}"
-        dest: "{{path + service_name}}/"
+        dest: "{{path + dir_name}}/"
         remote_src: yes
       with_items: "{{service_list[service_name].file}}"
     - terraform:
-        project_path: '{{path + service_name}}'
+        project_path: '{{path + dir_name}}'
         state: present
         force_init: true
         variables: "{{service_list[service_name].parameter}}"
